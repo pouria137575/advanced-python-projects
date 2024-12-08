@@ -1,0 +1,10 @@
+import requests
+from bs4 import BeautifulSoup
+
+url = "https://tv.filmnet.ir"
+response = requests.get(url)
+soup = BeautifulSoup(response.content, 'html.parser')
+
+films = soup.find_all('h4', class_="css-stgv2v eg0dt7k0")
+for film in films:
+    print(film.text)
